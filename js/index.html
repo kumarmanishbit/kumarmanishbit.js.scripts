@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+
+<body>
+  <div>
+<img src="images/sunny.png" style="width:200px;height:150px">
+  </div>
+
+<div id="result">
+
+
+</div>
+
+<h1></h1>
+
+<button>Change User !!!</button>
+</body>
+
+<script>
+
+var images = document.querySelector('img');
+
+var imageSource = ['sunny.png','rainy.png','pic_mountain.jpg','ice-cream.jpg'];
+
+var count = 0;
+
+images.onclick = setInterval(alertFunc, 1000);
+
+function alertFunc(){
+count++;
+count = count%imageSource.length;
+images.setAttribute('src','images/'+imageSource[count]);
+}
+var myButton = document.querySelector('button');
+var myHeading = document.querySelector('h1');
+//setTimeout(function(){ alert("Hello"); }, 3000);
+
+function setUserName() {
+  var myName = prompt('Please enter your name.');
+  localStorage.setItem('name', myName);
+  myHeading.textContent = 'Mozilla is cool, ' + myName;
+}
+
+myButton.onclick = setUserName;
+if(!localStorage.getItem('name')) {
+  setUserName();
+} else {
+  var storedName = localStorage.getItem('name');
+  myHeading.textContent = 'Mozilla is cool, ' + storedName;
+}
+</script>
+
+</html>
